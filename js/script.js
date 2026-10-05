@@ -59,6 +59,104 @@ const projects = [
 const projectsContainer =
     document.getElementById("projects-container");
 
+const themeToggle =
+    document.querySelector(".theme-toggle");
+
+const themeIcon =
+    document.querySelector(".theme-toggle__icon");
+
+const themeLabel =
+    document.querySelector(".theme-toggle__label");
+
+
+function applyTheme(theme) {
+
+    const isLight = theme === "light";
+
+    document.body.dataset.theme = theme;
+
+    if (themeToggle) {
+        themeToggle.setAttribute(
+            "aria-pressed",
+            String(isLight)
+        );
+
+        themeToggle.setAttribute(
+            "aria-label",
+            isLight
+                ? "Switch to dark mode"
+                : "Switch to light mode"
+        );
+    }
+
+    if (themeIcon) {
+        themeIcon.textContent = isLight ? "☀" : "☾";
+    }
+
+    if (themeLabel) {
+        themeLabel.textContent = isLight ? "Light" : "Dark";
+    }
+
+    try {
+        localStorage.setItem(
+            "portfolio-theme",
+            theme
+        );
+    } catch (error) {
+        console.warn(
+            "Theme preference could not be saved.",
+            error
+        );
+    }
+
+}
+
+
+function initializeTheme() {
+
+    try {
+        const savedTheme = localStorage.getItem(
+            "portfolio-theme"
+        );
+
+        const preferredTheme =
+            savedTheme || "dark";
+
+        applyTheme(preferredTheme);
+
+    } catch (error) {
+        applyTheme("dark");
+    }
+
+}
+
+
+if (themeToggle) {
+
+    themeToggle.addEventListener(
+        "click",
+        () => {
+
+            const currentTheme =
+                document.body.dataset.theme === "light"
+                    ? "light"
+                    : "dark";
+
+            const nextTheme =
+                currentTheme === "dark"
+                    ? "light"
+                    : "dark";
+
+            applyTheme(nextTheme);
+
+        }
+    );
+
+}
+
+
+initializeTheme();
+
 
 function createProjectCard(project) {
 

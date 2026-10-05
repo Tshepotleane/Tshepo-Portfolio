@@ -21,13 +21,14 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #080808;
-    color: #f4f1ea;
+    background: var(--background);
+    color: var(--text);
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
-    background: #d7ff3f;
+    background: var(--accent);
     color: #000000;
 }
 
@@ -53,14 +54,49 @@ img {
 
     --text: #f4f1ea;
     --muted: #858585;
-
+    --muted-soft: #999999;
+    --muted-strong: #555555;
+    --muted-stronger: #666666;
+    --heading-stroke: rgba(244, 241, 234, 0.65);
     --line: rgba(244, 241, 234, 0.14);
-
+    --line-strong: rgba(244, 241, 234, 0.08);
     --accent: #d7ff3f;
+    --navbar-bg: rgba(8, 8, 8, 0.72);
+    --nav-link: #9b9b9b;
+    --nav-link-hover: #ffffff;
+    --nav-cta-bg: #f4f1ea;
+    --nav-cta-text: #000000;
+    --theme-button-bg: rgba(255, 255, 255, 0.04);
+    --theme-button-border: rgba(244, 241, 234, 0.14);
+    --theme-button-text: #f4f1ea;
 
     --max-width: 1400px;
 
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body[data-theme="light"] {
+    --background: #f4f1ea;
+    --surface: #ffffff;
+    --surface-light: #f7f3ee;
+
+    --text: #101010;
+    --muted: #4d4d4d;
+    --muted-soft: #5d5d5d;
+    --muted-strong: #5a5a5a;
+    --muted-stronger: #777777;
+    --heading-stroke: rgba(16, 16, 16, 0.65);
+    --line: rgba(16, 16, 16, 0.12);
+    --line-strong: rgba(16, 16, 16, 0.08);
+    --accent: #7aa100;
+    --navbar-bg: rgba(255, 255, 255, 0.72);
+    --nav-link: #4f4f4f;
+    --nav-link-hover: #111111;
+    --nav-cta-bg: #111111;
+    --nav-cta-text: #f4f1ea;
+    --theme-button-bg: rgba(17, 17, 17, 0.04);
+    --theme-button-border: rgba(17, 17, 17, 0.12);
+    --theme-button-text: #101010;
 }
 
 
@@ -120,7 +156,7 @@ img {
 
     border: 1px solid var(--line);
 
-    background: rgba(8, 8, 8, 0.72);
+    background: var(--navbar-bg);
 
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -166,7 +202,7 @@ img {
 .nav-links a {
     position: relative;
 
-    color: #9b9b9b;
+    color: var(--nav-link);
 
     font-size: 10px;
 
@@ -193,7 +229,7 @@ img {
 }
 
 .nav-links a:hover {
-    color: #ffffff;
+    color: var(--nav-link-hover);
 }
 
 .nav-links a:hover::after,
@@ -205,6 +241,50 @@ img {
     color: var(--accent);
 }
 
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-right: 16px;
+    padding: 8px 12px;
+
+    border: 1px solid var(--theme-button-border);
+    background: var(--theme-button-bg);
+    color: var(--theme-button-text);
+
+    font-family: inherit;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
+
+.theme-toggle__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    line-height: 1;
+}
+
+.theme-toggle__label {
+    line-height: 1;
+}
+
 .nav-cta {
     display: flex;
     align-items: center;
@@ -212,8 +292,8 @@ img {
 
     padding: 11px 16px;
 
-    background: var(--text);
-    color: #000;
+    background: var(--nav-cta-bg);
+    color: var(--nav-cta-text);
 
     font-size: 9px;
     font-weight: 800;
@@ -223,11 +303,13 @@ img {
 
     transition:
         background 0.3s ease,
-        transform 0.3s ease;
+        transform 0.3s ease,
+        color 0.3s ease;
 }
 
 .nav-cta:hover {
     background: var(--accent);
+    color: #000;
     transform: translateY(-2px);
 }
 
@@ -306,7 +388,7 @@ img {
 
     color: transparent;
 
-    -webkit-text-stroke: 1px rgba(244, 241, 234, 0.65);
+    -webkit-text-stroke: 1px var(--heading-stroke);
 }
 
 .hero-bottom {
@@ -320,7 +402,7 @@ img {
 .hero-description {
     max-width: 430px;
 
-    color: #999999;
+    color: var(--muted-soft);
 
     font-size: 15px;
     line-height: 1.8;
@@ -498,7 +580,7 @@ img {
 
     border-top: 1px solid var(--line);
 
-    color: #5d5d5d;
+    color: var(--muted);
 
     font-size: 8px;
 
@@ -529,7 +611,7 @@ img {
 }
 
 .statement-content p {
-    color: #555555;
+    color: var(--muted-strong);
 
     font-size: clamp(35px, 5vw, 78px);
 
@@ -590,7 +672,7 @@ img {
 .about-title h2 span {
     color: transparent;
 
-    -webkit-text-stroke: 1px #777777;
+    -webkit-text-stroke: 1px var(--muted-stronger);
 }
 
 .about-text {
@@ -600,7 +682,7 @@ img {
 .large-copy {
     margin-bottom: 35px;
 
-    color: #e7e4dc;
+    color: var(--text);
 
     font-size: 24px;
 
@@ -672,7 +754,7 @@ img {
 .section-heading h2 span {
     color: transparent;
 
-    -webkit-text-stroke: 1px #777777;
+    -webkit-text-stroke: 1px var(--muted-stronger);
 }
 
 .section-heading > p {
@@ -787,7 +869,7 @@ img {
 
     margin-bottom: 15px;
 
-    color: #888888;
+    color: var(--muted);
 
     font-size: 9px;
 
@@ -813,7 +895,7 @@ img {
 
     margin-top: 20px;
 
-    color: #999999;
+    color: var(--muted-soft);
 
     font-size: 14px;
 
@@ -844,7 +926,7 @@ img {
 
     border: 1px solid var(--line);
 
-    color: #999999;
+    color: var(--muted-soft);
 
     font-size: 8px;
 
@@ -902,7 +984,7 @@ img {
 .skills-header h2 span {
     color: transparent;
 
-    -webkit-text-stroke: 1px #777777;
+    -webkit-text-stroke: 1px var(--muted-stronger);
 }
 
 .skills-header p {
@@ -959,7 +1041,7 @@ img {
 }
 
 .skill-type {
-    color: #666666;
+    color: var(--muted-stronger);
 
     font-size: 8px;
 
@@ -1009,7 +1091,7 @@ img {
 .contact h2 span {
     color: transparent;
 
-    -webkit-text-stroke: 1px #777777;
+    -webkit-text-stroke: 1px var(--muted-stronger);
 }
 
 .contact-description {
@@ -1104,7 +1186,7 @@ img {
 }
 
 .footer-links a {
-    color: #777777;
+    color: var(--muted-stronger);
 
     font-size: 8px;
 
@@ -1125,9 +1207,9 @@ img {
 
     padding-top: 20px;
 
-    border-top: 1px solid rgba(244, 241, 234, 0.08);
+    border-top: 1px solid var(--line-strong);
 
-    color: #555555;
+    color: var(--muted-strong);
 
     font-size: 8px;
 
@@ -1393,7 +1475,7 @@ img {
 }
 
 .contact-details a {
-    color: #777777;
+    color: var(--muted-stronger);
     font-size: 10px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
