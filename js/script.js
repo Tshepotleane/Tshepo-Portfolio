@@ -47,10 +47,28 @@ const projects = [
             "#",
         demo:
             "#"
+    },
+
+    {
+        number: "03",
+        title: "SentimentScope",
+        type: "DATA / NLP / WEB APPLICATION",
+        description:
+            "A Python and Flask sentiment analysis platform that analyzes customer reviews, classifies sentiment and presents review insights through a web dashboard.",
+        technologies: [
+            "Python",
+            "Flask",
+            "Pandas",
+            "NLTK",
+            "VADER"
+        ],
+        github:
+            "https://github.com/Tshepotleane/SentimentScope",
+        demo:
+            "#"
     }
 
 ];
-
 
 /* =========================================================
    GENERATE PROJECTS
