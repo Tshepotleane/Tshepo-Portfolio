@@ -77,7 +77,19 @@ const projects = [
     technologies: ["Python", "Flask", "HTML", "CSS", "JavaScript", "SQLite"],
     github: "https://github.com/Tshepotleane/Skills-Bridge-SA",
     link: "https://github.com/Tshepotleane/Skills-Bridge-SA"
+},
+
+
+{
+    number: "05",
+    type: "GROUP PROJECT",
+    title: "AI Chatbot",
+    description: "A collaborative AI chatbot project developed as a team, exploring conversational AI and interactive user experiences.",
+    technologies: ["AI", "Python"],
+    github: "https://github.com/Dikeledi-K/ai_chatbot",
+    link: "https://github.com/Dikeledi-K/ai_chatbot"
 }
+
 
 
 ];
