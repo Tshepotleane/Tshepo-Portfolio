@@ -66,7 +66,19 @@ const projects = [
             "https://github.com/Tshepotleane/SentimentScope",
         demo:
             "#"
-    }
+    },
+    
+    
+{
+    number: "04",
+    type: "CAREER TECHNOLOGY",
+    title: "SkillsBridge SA",
+    description: "An AI-assisted career-readiness platform that helps graduates compare their skills against job requirements, identify skill gaps, and discover targeted learning pathways.",
+    technologies: ["Python", "Flask", "HTML", "CSS", "JavaScript", "SQLite"],
+    github: "https://github.com/Tshepotleane/Skills-Bridge-SA",
+    link: "https://github.com/Tshepotleane/Skills-Bridge-SA"
+}
+
 
 ];
 
