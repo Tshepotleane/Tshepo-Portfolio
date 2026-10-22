@@ -27,7 +27,9 @@ const projects = [
         github:
             "https://github.com/Tshepotleane/The-Art-Of-AI",
         demo:
-            "#"
+            "https://the-art-of-ai.onrender.com"
+
+           
     },
 
     {
@@ -65,7 +67,7 @@ const projects = [
         github:
             "https://github.com/Tshepotleane/SentimentScope",
         demo:
-            "#"
+            "https://sentimentscope-rydn.onrender.com"
     },
     
     
@@ -76,8 +78,10 @@ const projects = [
     description: "An AI-assisted career-readiness platform that helps graduates compare their skills against job requirements, identify skill gaps, and discover targeted learning pathways.",
     technologies: ["Python", "Flask", "HTML", "CSS", "JavaScript", "SQLite"],
     github: "https://github.com/Tshepotleane/Skills-Bridge-SA",
-    link: "https://github.com/Tshepotleane/Skills-Bridge-SA"
-},
+    link: "https://skills-bridge-sa.onrender.com"
+
+},  
+
 
 
 {
