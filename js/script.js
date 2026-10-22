@@ -46,9 +46,9 @@ const projects = [
             "CSS"
         ],
         github:
-            "#",
+            "git@github.com:Tshepotleane/Job-Application-Tracker.git",
         demo:
-            "#"
+            ""
     },
 
     {
@@ -71,29 +71,41 @@ const projects = [
     },
     
     
+
 {
     number: "04",
     type: "CAREER TECHNOLOGY",
     title: "SkillsBridge SA",
-    description: "An AI-assisted career-readiness platform that helps graduates compare their skills against job requirements, identify skill gaps, and discover targeted learning pathways.",
-    technologies: ["Python", "Flask", "HTML", "CSS", "JavaScript", "SQLite"],
-    github: "https://github.com/Tshepotleane/Skills-Bridge-SA",
-    link: "https://skills-bridge-sa.onrender.com"
-
-},  
-
-
+    description:
+        "An AI-assisted career-readiness platform that helps graduates compare their skills against job requirements, identify skill gaps, and discover targeted learning pathways.",
+    technologies: [
+        "Python",
+        "Flask",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "SQLite"
+    ],
+    github:
+        "https://github.com/Tshepotleane/Skills-Bridge-SA",
+    demo:
+        "https://skills-bridge-sa.onrender.com"
+},
 
 {
     number: "05",
     type: "GROUP PROJECT",
     title: "AI Chatbot",
-    description: "A collaborative AI chatbot project developed as a team, exploring conversational AI and interactive user experiences.",
-    technologies: ["AI", "Python"],
-    github: "https://github.com/Dikeledi-K/ai_chatbot",
-    link: "https://github.com/Dikeledi-K/ai_chatbot"
+    description:
+        "A collaborative AI chatbot project developed as a team, exploring conversational AI and interactive user experiences.",
+    technologies: [
+        "AI",
+        "Python"
+    ],
+    github:
+        "https://github.com/Dikeledi-K/ai_chatbot",
+    demo: ""
 }
-
 
 
 ];
@@ -204,14 +216,27 @@ if (themeToggle) {
 initializeTheme();
 
 
-function createProjectCard(project) {
 
+function createProjectCard(project) {
     const card = document.createElement("article");
 
     card.className = "project-card";
 
-    card.innerHTML = `
+    const demoLink = project.demo
+        ? `
+            <a
+                href="${project.demo}"
+                class="project-link project-link--demo"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Live Demo
+                <span>↗</span>
+            </a>
+        `
+        : "";
 
+    card.innerHTML = `
         <div class="project-art"></div>
 
         <span class="project-number">
@@ -219,7 +244,6 @@ function createProjectCard(project) {
         </span>
 
         <div class="project-content">
-
             <span class="project-type">
                 ${project.type}
             </span>
@@ -233,37 +257,35 @@ function createProjectCard(project) {
             </p>
 
             <div class="project-footer">
-
                 <div class="project-tech">
-
                     ${project.technologies
                         .map(
                             technology =>
                                 `<span>${technology}</span>`
                         )
-                        .join("")
-                    }
-
+                        .join("")}
                 </div>
 
-                <a
-                    href="${project.github}"
-                    class="project-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    GitHub
-                    <span>↗</span>
-                </a>
+                <div class="project-links">
+                    <a
+                        href="${project.github}"
+                        class="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        GitHub
+                        <span>↗</span>
+                    </a>
 
+                    ${demoLink}
+                </div>
             </div>
-
         </div>
-
     `;
 
     return card;
 }
+
 
 
 /* =========================================================
